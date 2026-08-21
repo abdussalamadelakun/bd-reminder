@@ -1,0 +1,24 @@
+
+
+use case 
+receive mails about birthday reminders 
+
+entity relationship 
+birthday 
+- day, month, firstname, lastname
+
+emails
+- address  
+
+mails
+- some configs
+
+
+class
+
+
+resources 
+
+
+db schema 
+

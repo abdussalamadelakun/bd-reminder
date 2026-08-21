@@ -1,0 +1,22 @@
+{
+  "name": "bd-reminder",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/index.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1",
+    "node-cron": "^4.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
