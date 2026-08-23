@@ -2,7 +2,6 @@ import cron from "node-cron";
 
 // const birthdays = [
 //   { "Abdus-Salam Adelakun": "18/07/2004" },
-//   { "Lanre Anozie": "11/16/2005" },
 //   { "Test Data": "20/08/2004" },
 // ];
 
@@ -16,8 +15,10 @@ cron.schedule("34 19 * * *", () => {
   console.log(currentDate);
 
   for (const profile of profiles) {
-    const birthMonth: string = profile.dateOfBirth.split("-")[1];
-    const birthDay: string = profile.dateOfBirth.split("-")[2];
+    // const birthMonth: string = profile.dateOfBirth.split("-")[1];
+    // const birthDay: string = profile.dateOfBirth.split("-")[2];
+    const birthMonth = profile.dateOfBirth.split("-")[1];
+    const birthDay = profile.dateOfBirth.split("-")[2];
     if (
       String(currentDate.getMonth() + 1).padStart(2, "0") == birthMonth &&
       String(currentDate.getDate()).padStart(2, "0") == birthDay
