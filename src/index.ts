@@ -1,10 +1,12 @@
-import cron from "node-cron";
 import dotenv from "dotenv";
 
+import cron from "node-cron";
+import express from "express";
 import { fileURLToPath } from "url";
 import { join, dirname } from "path";
-import { Client, Pool } from "pg";
 
+const app = express();
+app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -12,6 +14,8 @@ dotenv.config({
   override: true,
   path: join(__dirname, "../development.env"),
 });
+
+import pool from "./db.js";
 
 // const birthdays = [
 //   { "Abdus-Salam Adelakun": "18/07/2004" },
@@ -23,20 +27,18 @@ const profiles = [
   { fullName: "Test Data", dateOfBirth: "2026-08-20" },
 ];
 
-const pool = new Pool();
+// (async () => {
+//   const client = await pool.connect();
 
-(async () => {
-  const client = await pool.connect();
-
-  try {
-    const result = await client.query("SELECT current_user");
-    console.log(result);
-  } catch (err) {
-    console.error(err);
-  } finally {
-    client.release();
-  }
-})();
+//   try {
+//     const result = await client.query("SELECT current_user");
+//     console.log(result);
+//   } catch (err) {
+//     console.error(err);
+//   } finally {
+//     client.release();
+//   }
+// })();
 
 cron.schedule("34 19 * * *", () => {
   const currentDate = new Date();

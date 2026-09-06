@@ -22,3 +22,6 @@ resources
 
 db schema 
 
+
+- modules execution 
+- file naming convention 
