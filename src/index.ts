@@ -2,20 +2,22 @@ import dotenv from "dotenv";
 
 import cron from "node-cron";
 import express from "express";
-import { fileURLToPath } from "url";
-import { join, dirname } from "path";
+// import { fileURLToPath } from "url";
+// import { join, dirname } from "path";
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
+
+// dotenv.config({
+//   override: true,
+//   path: join(__dirname, "../development.env"),
+// });
+
+import profileRoutes from "./routes/profiles.js";
 
 const app = express();
 app.use(express.json());
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-dotenv.config({
-  override: true,
-  path: join(__dirname, "../development.env"),
-});
-
-import pool from "./db.js";
+app.use("/profiles", profileRoutes);
 
 // const birthdays = [
 //   { "Abdus-Salam Adelakun": "18/07/2004" },
@@ -56,4 +58,8 @@ cron.schedule("34 19 * * *", () => {
       console.log(`Happy birthday, ${profile.fullName}`);
     }
   }
+});
+
+app.listen(8080, () => {
+  console.log("App listening on port 8080");
 });

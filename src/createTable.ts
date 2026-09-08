@@ -12,6 +12,7 @@ const createTableQuery = `
 CREATE TABLE IF NOT EXISTS profiles (
 id SERIAL PRIMARY KEY,
 full_name TEXT NOT NULL,
+date_of_birth TEXT NOT NULL, 
 email TEXT,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
